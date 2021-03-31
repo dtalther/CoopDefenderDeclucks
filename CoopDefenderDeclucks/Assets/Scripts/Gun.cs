@@ -7,13 +7,14 @@ public class Gun : MonoBehaviour
     public float fireRate;
     public float nextFire;
     public float bulletSpeed;
+    public bool spread;
     public GameObject bulletType;
     // Start is called before the first frame update
     void Start()
     {
-        fireRate = 0.5f;
-        bulletSpeed = 20.0f;
-        nextFire = -1;
+        //fireRate = 0.5f;
+       // bulletSpeed = 20.0f;
+       // nextFire = -1;
     }
 
     // Update is called once per frame
