@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : MonoBehaviour
+public class WeaponPickUp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float swingSpeed;
-    public float nextSwing;
-
     void Start()
     {
         
@@ -15,6 +12,10 @@ public class Melee : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    private void OnCollisionEnter(Collision collision)
     {
         
     }
