@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8637804148176224769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.021603584, y: 0.2117877, z: 0.8133118}
+  m_LocalPosition: {x: 9.512836, y: 1.159884, z: -0.8975167}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.3}
   m_Children:
   - {fileID: 8637804147940175867}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.5
-  nextFire: -1
+  nextFire: 0.5
   bulletSpeed: 30
   muzzleFlash: {fileID: 8637804148336859114}
   spread: 0
