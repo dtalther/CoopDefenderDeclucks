@@ -24,6 +24,7 @@ public class BulletCollision : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag != "Bullet")
+            Destroy(gameObject);
     }
 }
