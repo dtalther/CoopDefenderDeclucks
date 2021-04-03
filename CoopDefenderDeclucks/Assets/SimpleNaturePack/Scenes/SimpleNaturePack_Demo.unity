@@ -391,7 +391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &109160651
 PrefabInstance:
@@ -1313,7 +1313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 49.800003, y: -92.44401, z: 0}
 --- !u!1001 &327231632
 PrefabInstance:
@@ -1498,7 +1498,7 @@ Transform:
   - {fileID: 310941000}
   - {fileID: 758815861}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &363291728
 PrefabInstance:
@@ -6380,7 +6380,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2130829083}
   m_PrefabAsset: {fileID: 0}
-
 --- !u!1001 &1107347717959398812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6465,7 +6464,7 @@ PrefabInstance:
     - target: {fileID: 3329468896995084830, guid: bc59174cf2830f3429575e5254c1ed53,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3329468896995084830, guid: bc59174cf2830f3429575e5254c1ed53,
         type: 3}
@@ -6529,7 +6528,7 @@ PrefabInstance:
     - target: {fileID: 2267696724577709069, guid: 6be0aa07709605c47a0544b0e06b70f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2267696724577709069, guid: 6be0aa07709605c47a0544b0e06b70f1,
         type: 3}
@@ -6593,7 +6592,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2047810995}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 179842046468760149, guid: 501c16fa41bfd104b8dc76f06d34dca3,
         type: 3}
@@ -6667,4 +6666,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 501c16fa41bfd104b8dc76f06d34dca3, type: 3}
-

@@ -99,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            gun.shoot(lookPoint);
+            if(gun != null)
+                gun.shoot(lookPoint);
         }
     }
 
