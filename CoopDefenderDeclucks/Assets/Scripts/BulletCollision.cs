@@ -11,6 +11,7 @@ public class BulletCollision : MonoBehaviour
     {
         speed = 8.0f;
         rigid = GetComponent<Rigidbody>();
+        StartCoroutine(SelfDestruct());
     }
 
     // Update is called once per frame
@@ -22,9 +23,14 @@ public class BulletCollision : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag != "Bullet")
             Destroy(gameObject);
+    }
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }
