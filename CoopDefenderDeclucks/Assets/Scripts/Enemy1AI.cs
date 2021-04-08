@@ -9,11 +9,6 @@ public class Enemy1AI : MonoBehaviour
     public Transform target;
     public NavMeshAgent move;
     public float speed;
-    //Start is called before the first frame update
-    private void Start()
-    {
-        speed = 2.0f;
-    }
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
