@@ -5836,6 +5836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2047810995}
   move: {fileID: 1820956253}
+  speed: 0
 --- !u!1001 &1825213771
 PrefabInstance:
   m_ObjectHideFlags: 0

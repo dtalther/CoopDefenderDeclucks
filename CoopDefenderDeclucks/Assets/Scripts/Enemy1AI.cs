@@ -8,22 +8,23 @@ public class Enemy1AI : MonoBehaviour
 
     public Transform target;
     public NavMeshAgent move;
-
-    // Start is called before the first frame update
-    void Start()
+    public float speed;
+    //Start is called before the first frame update
+    private void Start()
     {
-        target = FindPlayer.found.player.transform;
-        move = GetComponent<NavMeshAgent>();
+        speed = 2.0f;
     }
-
+    //Alerts enemies to the location of the player at all times
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
+        move = GetComponent<NavMeshAgent>();
     }
     // Update is called once per frame
     void Update()
     {
         move.SetDestination(target.position);
         transform.LookAt(target);
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
