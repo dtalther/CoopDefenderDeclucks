@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Enemy1AI : MonoBehaviour
 {
 
-    Transform target;
-    NavMeshAgent move;
+    public Transform target;
+    public NavMeshAgent move;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +16,14 @@ public class Enemy1AI : MonoBehaviour
         move = GetComponent<NavMeshAgent>();
     }
 
+    private void Awake()
+    {
+        target = GameObject.Find("Player").transform;
+    }
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
         move.SetDestination(target.position);
+        transform.LookAt(target);
     }
 }
