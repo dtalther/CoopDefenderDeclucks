@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class FindPlayer : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
+    #region Singleton
+    public static FindPlayer found;
+    void Awake()
     {
-        
+        found = this;
     }
+    #endregion
 
-    // Update is called once per frame
-    void Update()
+    public GameObject player;
+    private void Update()
     {
-        
+        player = player;
     }
 }
