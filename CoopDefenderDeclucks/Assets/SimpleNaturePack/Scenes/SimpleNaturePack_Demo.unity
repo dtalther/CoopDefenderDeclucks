@@ -6397,12 +6397,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855574883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54102ce2e21b08a47807e6d6fc242435, type: 3}
+  m_Script: {fileID: 11500000, guid: 94cff29e638adb1408d6d00c52942c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2047810995}
   move: {fileID: 1855574886}
   speed: 1.5
+  dash: 4.5
+  range: 6
 --- !u!54 &1855574885
 Rigidbody:
   m_ObjectHideFlags: 0
