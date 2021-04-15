@@ -22,4 +22,8 @@ public class Enemy1AI : MonoBehaviour
         transform.LookAt(target);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        GameObject.Destroy(target);
+    }
 }
