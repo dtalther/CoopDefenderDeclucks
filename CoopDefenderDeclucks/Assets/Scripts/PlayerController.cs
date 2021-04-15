@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             gameManager.unpauseGame();
         }
-        else
+        else if ((gameManager.isPaused == false))
         {
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
             moveVelocity = moveInput * moveSpeed;
@@ -90,10 +90,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
             #endregion
-
+     
             Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLength;
+           float rayLength;
 
             if (groundPlane.Raycast(cameraRay, out rayLength))
             {
