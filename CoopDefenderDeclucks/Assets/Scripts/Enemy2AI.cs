@@ -31,4 +31,15 @@ public class Enemy2AI : MonoBehaviour
             transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

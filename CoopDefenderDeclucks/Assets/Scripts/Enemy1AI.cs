@@ -24,6 +24,13 @@ public class Enemy1AI : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        GameObject.Destroy(target);
+        if(collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
