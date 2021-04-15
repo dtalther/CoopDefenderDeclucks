@@ -4,11 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - TimeSlow
   - SpreggShot
   - RapidFire
   - Bullet
   - MainMenu
+=======
+  - Enemy
+  - Bullet
+>>>>>>> enemies
   layers:
   - Default
   - TransparentFX

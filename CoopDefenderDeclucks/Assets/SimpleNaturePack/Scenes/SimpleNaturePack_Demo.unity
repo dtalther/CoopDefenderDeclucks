@@ -5089,6 +5089,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5195216325663097875, guid: 3f769bb4b951e0049b3f7a60fdc01ca0,
         type: 3}
+    - target: {fileID: 4773825810172744399, guid: 81b4264780af7fb4ca516ca0fad378a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4773825811693819900, guid: 81b4264780af7fb4ca516ca0fad378a3,
         type: 3}
       propertyPath: m_RootOrder
@@ -5148,6 +5153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerFab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773825811693819901, guid: 81b4264780af7fb4ca516ca0fad378a3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81b4264780af7fb4ca516ca0fad378a3, type: 3}
@@ -6517,6 +6527,11 @@ PrefabInstance:
     - target: {fileID: 276798993434168604, guid: 08c2b6e6f5b41574998a994ce9bab8d9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276798993434168605, guid: 08c2b6e6f5b41574998a994ce9bab8d9,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 276798993434168611, guid: 08c2b6e6f5b41574998a994ce9bab8d9,

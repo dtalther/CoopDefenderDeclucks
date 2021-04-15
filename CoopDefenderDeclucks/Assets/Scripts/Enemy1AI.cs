@@ -22,4 +22,15 @@ public class Enemy1AI : MonoBehaviour
         transform.LookAt(target);
         transform.position += transform.forward * speed * Time.deltaTime;
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

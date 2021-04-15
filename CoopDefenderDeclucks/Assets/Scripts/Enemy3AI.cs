@@ -36,4 +36,15 @@ public class Enemy3AI : MonoBehaviour
             changeDirection += 1;
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
