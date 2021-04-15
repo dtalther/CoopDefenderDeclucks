@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float rapidFireTimer;
     public bool isRapidFire;
 
+    public MainMenu gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,58 +38,70 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
         lookPoint = transform.forward;
+        gameManager = FindObjectOfType<MainMenu>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"),0f,Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
-
-        #region Code for Power-Up Timers
-        if (timeSlowTimer > 0)//Checks to see if time slow power up is active
+        //If the escape key is pressed and the player is in a gameplay scene, pause the game
+        if (Input.GetKeyDown(KeyCode.Escape) && gameManager.isPaused == false && gameManager.currentScene != 0)
         {
-            timeSlowTimer -= Time.deltaTime/Time.timeScale;
-            if (timeSlowTimer <= 0)//Return time scale to normal after elapsed power-up time
+            gameManager.pauseGame();
+        }
+        //If the escape key is pressed while the game is paused, unpause the game
+        else if (Input.GetKeyDown(KeyCode.Escape) && gameManager.isPaused == true && gameManager.currentScene != 0)
+        {
+            gameManager.unpauseGame();
+        }
+        else
+        {
+            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            moveVelocity = moveInput * moveSpeed;
+
+            #region Code for Power-Up Timers
+            if (timeSlowTimer > 0)//Checks to see if time slow power up is active
             {
-                timeSlowTimer = 0;
-                isTimeSlowed = false;
-                Time.timeScale = 1;
+                timeSlowTimer -= Time.deltaTime / Time.timeScale;
+                if (timeSlowTimer <= 0)//Return time scale to normal after elapsed power-up time
+                {
+                    timeSlowTimer = 0;
+                    isTimeSlowed = false;
+                    Time.timeScale = 1;
+                }
+            }
+            if (spreggShotTimer > 0)
+            {
+                spreggShotTimer -= Time.deltaTime / Time.timeScale;
+                if (spreggShotTimer <= 0)
+                {
+                    spreggShotTimer = 0;
+                    isSpregg = false;
+                }
+
+            }
+            if (rapidFireTimer > 0)
+            {
+                rapidFireTimer -= Time.deltaTime / Time.timeScale;
+                if (rapidFireTimer <= 0)
+                {
+                    rapidFireTimer = 0;
+                    isRapidFire = false;
+                }
+            }
+            #endregion
+
+            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLength;
+
+            if (groundPlane.Raycast(cameraRay, out rayLength))
+            {
+                lookPoint = cameraRay.GetPoint(rayLength);
+
+                transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
             }
         }
-        if(spreggShotTimer > 0)
-        {
-            spreggShotTimer -= Time.deltaTime / Time.timeScale;
-            if(spreggShotTimer <= 0)
-            {
-                spreggShotTimer = 0;
-                isSpregg = false;
-            }
-
-        }
-        if(rapidFireTimer > 0)
-        {
-            rapidFireTimer -= Time.deltaTime / Time.timeScale;
-            if(rapidFireTimer <= 0)
-            {
-                rapidFireTimer = 0;
-                isRapidFire = false;
-            }
-        }
-        #endregion
-
-
-        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-        Plane groundPlane = new Plane(Vector3.up,Vector3.zero);
-        float rayLength;
-
-        if(groundPlane.Raycast(cameraRay,out rayLength))
-        {
-           lookPoint = cameraRay.GetPoint(rayLength);
-
-            transform.LookAt(new Vector3(lookPoint.x,transform.position.y,lookPoint.z));
-        }
-       
     }
     //Consistant. Not based on frame rate.
     void FixedUpdate()
