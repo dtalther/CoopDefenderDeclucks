@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject enemytype;
     public float spawnrate;
     public float time;
+    public float changerate;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,12 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
+        changerate += Time.deltaTime;
+        if (changerate > 60 && spawnrate > 3)
+        {
+            spawnrate -= 1;
+            changerate = 0;
+        }
         if (time > spawnrate)
         {
             SpawnEnemy();
