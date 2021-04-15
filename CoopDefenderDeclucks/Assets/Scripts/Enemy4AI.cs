@@ -19,19 +19,22 @@ public class Enemy4AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move.SetDestination(target.position);
-        transform.LookAt(target);
-        transform.position += transform.forward * speed * Time.deltaTime;
-        if (randomDirection % 2 == 0)
+        if (target != null)
         {
-            transform.position += transform.right * speed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += -transform.right * speed * Time.deltaTime;
+            move.SetDestination(target.position);
+            transform.LookAt(target);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            if (randomDirection % 2 == 0)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += -transform.right * speed * Time.deltaTime;
+            }
         }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
