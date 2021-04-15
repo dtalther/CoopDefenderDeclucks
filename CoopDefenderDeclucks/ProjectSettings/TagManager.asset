@@ -8,6 +8,7 @@ TagManager:
   - SpreggShot
   - RapidFire
   - Bullet
+  - MainMenu
   layers:
   - Default
   - TransparentFX
