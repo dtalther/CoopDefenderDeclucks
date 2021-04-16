@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     public MainMenu gameManager;
 
+    public int eggCount;//How many egg grenades you have
+    public GameObject grenadeType;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         lookPoint = transform.forward;
         gameManager = FindObjectOfType<MainMenu>();
+        eggCount = 3;
     }
 
     // Update is called once per frame
@@ -119,6 +122,20 @@ public class PlayerController : MonoBehaviour
                 transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
             }
         }
+        if (Input.GetMouseButton(0))
+        {
+            if (gun != null)
+                gun.shoot(lookPoint);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (eggCount > 0)
+            {
+                eggxplosion();
+                eggCount--;
+            }
+
+        }
     }
     //Consistant. Not based on frame rate.
     void FixedUpdate()
@@ -128,11 +145,12 @@ public class PlayerController : MonoBehaviour
         myRigidbody.velocity = moveVelocity;
         
 
-        if (Input.GetMouseButton(0))
-        {
-            if(gun != null)
-                gun.shoot(lookPoint);
-        }
+      
+    }
+    void eggxplosion()
+    {
+        EggGrenade grenade = Instantiate(grenadeType,this.transform.position,this.transform.rotation).GetComponent<EggGrenade>();
+        //grenade.gameObject.transform.position = this.gameObject.transform.position;
     }
 
     void OnTriggerEnter(Collider other)

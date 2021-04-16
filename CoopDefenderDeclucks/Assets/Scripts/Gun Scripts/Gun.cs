@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float fireRate;
+    public float fireRate;//Rate of fire for the gun
     protected float currentFireRate;
-    public float nextFire;
-    public float bulletSpeed;
-    public ParticleSystem muzzleFlash;
+    public float nextFire;//Checks if the gun can fire
+    public float bulletSpeed; // speed at which the bullet travels
+    public ParticleSystem muzzleFlash; // The particle system for the muzzle flash
     public bool spread;
-    public GameObject bulletType;
-    public AudioSource ShootSound;
-    public PlayerController player;
+    public GameObject bulletType;//Type of bullet
+    public AudioSource ShootSound;//sound effect for gun shot
+    public PlayerController player;//Player reference
 
     // Start is called before the first frame update
    public virtual void Start()

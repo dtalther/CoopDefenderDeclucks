@@ -12,23 +12,30 @@ public class Enemy1AI : MonoBehaviour
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("Coop").transform;
         move = GetComponent<NavMeshAgent>();
     }
     // Update is called once per frame
     void Update()
     {
-        move.SetDestination(target.position);
-        transform.LookAt(target);
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if (target != null)
+        {
+            move.SetDestination(target.position);
+            transform.LookAt(target);
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag.Equals("Bullet"))
+        if (collision.gameObject.tag.Equals("Bullet"))
         {
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag.Equals("Player"))
+        else if (collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag.Equals("Coop"))
         {
             Destroy(collision.gameObject);
         }

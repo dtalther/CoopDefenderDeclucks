@@ -18,25 +18,28 @@ public class Enemy3AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move.SetDestination(target.position);
-        transform.LookAt(target);
-        transform.position += transform.forward * speed * Time.deltaTime;
-        if(changeDirection < 0 || changeDirection > 250)
+        if (target != null)
         {
-            changeDirection = 0;
-        }
-        if(changeDirection <= 125)
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-            changeDirection += 1;
-        }
-        else if(changeDirection <= 250)
-        {
-            transform.position += -transform.right * speed * Time.deltaTime;
-            changeDirection += 1;
+            move.SetDestination(target.position);
+            transform.LookAt(target);
+            transform.position += transform.forward * speed * Time.deltaTime;
+            if (changeDirection < 0 || changeDirection > 250)
+            {
+                changeDirection = 0;
+            }
+            if (changeDirection <= 125)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+                changeDirection += 1;
+            }
+            else if (changeDirection <= 250)
+            {
+                transform.position += -transform.right * speed * Time.deltaTime;
+                changeDirection += 1;
+            }
         }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {

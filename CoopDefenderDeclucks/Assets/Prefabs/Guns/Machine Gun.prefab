@@ -54,6 +54,7 @@ MonoBehaviour:
   bulletType: {fileID: 5195216325663097875, guid: 3f769bb4b951e0049b3f7a60fdc01ca0,
     type: 3}
   ShootSound: {fileID: 2580105471430103924}
+  player: {fileID: 0}
 --- !u!1 &5608167870032501743
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +96,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 65201ddabb4144f6a8fb9480120b7656, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.324
   m_Pitch: 1

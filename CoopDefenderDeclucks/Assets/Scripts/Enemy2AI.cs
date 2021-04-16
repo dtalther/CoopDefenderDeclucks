@@ -19,19 +19,22 @@ public class Enemy2AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-        move.SetDestination(target.position);
-        transform.LookAt(target);
-        if (distance <= range)
+        if (target != null)
         {
-            transform.position += transform.forward * (speed + dash) * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            float distance = Vector3.Distance(target.position, transform.position);
+            move.SetDestination(target.position);
+            transform.LookAt(target);
+            if (distance <= range)
+            {
+                transform.position += transform.forward * (speed + dash) * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += transform.forward * speed * Time.deltaTime;
+            }
         }
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {

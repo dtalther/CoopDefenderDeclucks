@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
 
     public int currentScene;//Represents the current scene in play
 
+    public int score;//Score
+
     private float previousTimeScale;//Used to unpause game and set it back to the previous time scale
 
     // Start is called before the first frame update
