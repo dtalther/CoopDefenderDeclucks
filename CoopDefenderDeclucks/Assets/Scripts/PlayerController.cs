@@ -55,19 +55,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //If the escape key is pressed and the player is in a gameplay scene, pause the game
-       
-        if (  (gameManager != null) && Input.GetKeyDown(KeyCode.Escape) && gameManager.isPaused == false && gameManager.currentScene != 0)
-        {
-            gameManager.pauseGame();
-        }
-        //If the escape key is pressed while the game is paused, unpause the game
-        else if ((gameManager != null) && Input.GetKeyDown(KeyCode.Escape) && gameManager.isPaused == true && gameManager.currentScene != 0)
-        {
-            gameManager.unpauseGame();
-        }
-        else if ((gameManager != null) && (gameManager.isPaused == false))
-        {
             moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
             moveVelocity = moveInput * moveSpeed;
 
@@ -113,23 +100,7 @@ public class PlayerController : MonoBehaviour
 
                 transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
             }
-        }
-        else
-        {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-            moveVelocity = moveInput * moveSpeed;
-
-            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLength;
-
-            if (groundPlane.Raycast(cameraRay, out rayLength))
-            {
-                lookPoint = cameraRay.GetPoint(rayLength);
-
-                transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
-            }
-        }
+        
         if (Input.GetMouseButton(0))
         {
             if (gun != null)

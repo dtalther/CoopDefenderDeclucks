@@ -36,6 +36,54 @@ public class MainMenu : MonoBehaviour
         currentScene = 0;
         Btn_Resume.gameObject.SetActive(false);
         menuCanvas = transform.GetChild(0).GetComponent<Canvas>();
+
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        setMenuUI(currentScene);
+    }
+
+    //Update function
+    void Update()
+    {
+        //Pauses game if player presses escape and game is not paused
+        if(Input.GetKeyDown(KeyCode.Escape) && isPaused == false && currentScene != 0)
+        {
+            pauseGame();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused == true && currentScene != 0)
+        {
+            unpauseGame();
+        }
+    }
+
+    public void setMenuUI(int sceneValue)
+    {
+        //If the the scene value is 0 and the current scene is 0, quit the game
+        if (sceneValue == 0 && currentScene == 0)
+            Application.Quit();
+        else
+        {
+            currentScene = sceneValue;
+            if (currentScene > 0)//When scene updates, update menu
+            {
+                Txt_Title.gameObject.SetActive(false);
+                Btn_ClassicMode.gameObject.SetActive(false);
+                Btn_CampaignMode.gameObject.SetActive(false);
+                Btn_QuitGame.gameObject.SetActive(false);
+                Btn_Resume.gameObject.SetActive(true);
+                isPaused = false;
+                menuCanvas.gameObject.SetActive(false);
+            }
+            else if (currentScene < 1)//If scene val is less than 1, load main menu
+            {
+                Time.timeScale = 1;
+                Btn_ClassicMode.gameObject.SetActive(true);
+                Btn_CampaignMode.gameObject.SetActive(true);
+                Btn_Resume.gameObject.SetActive(false);
+                Txt_Title.gameObject.SetActive(true);
+                currentScene = 0;
+                menuCanvas.gameObject.SetActive(true);
+            }
+        }
     }
 
     //Starts a scene based on its scene value
