@@ -29,7 +29,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4729044028934880647}
-  - {fileID: 1144617618505290633}
   - {fileID: 9163007958395019029}
   - {fileID: 1812916729211780977}
   m_Father: {fileID: 6777195618781006980}
@@ -78,7 +77,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 6160458183528148373}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3594301838137994823
 MeshFilter:
@@ -173,7 +172,7 @@ Transform:
   - {fileID: 6160458183528148373}
   - {fileID: 6885954199682936348}
   m_Father: {fileID: 8434513040896615620}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6827074789046143363
 MeshFilter:
@@ -239,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6160458183528148373}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8857300263904659476
 Light:
@@ -329,6 +328,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1144617618505290633}
   - {fileID: 6777195618781006980}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -361,8 +361,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6160458183528148373}
-  m_RootOrder: 1
+  m_Father: {fileID: 8434513040896615620}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7132062647300633017
 AudioSource:
