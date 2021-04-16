@@ -61,7 +61,7 @@ public class SkillTree : MonoBehaviour
         {
             print("BulletButton");
             tier2 = true;
-            player.bulletSpeedMod = 1.4f;
+            player.bulletSpeedMod += .4f;
             if (player.gun != null)
                 player.gun.bulletSpeed *= player.bulletSpeedMod;
             Btn_Bullet.image.color = Color.yellow;
@@ -75,7 +75,7 @@ public class SkillTree : MonoBehaviour
         {
             print("Gun Button");
             tier2 = true;
-            player.fireRateMod = .75f;
+            player.fireRateMod *= .8f;
             if(player.gun != null)
                 player.gun.fireRate *= player.fireRateMod;
             Btn_Gun.image.color = Color.yellow;
@@ -103,7 +103,7 @@ public class SkillTree : MonoBehaviour
         {
             print("Gear Button");
             tier4 = true;
-            player.fireRateMod = .5f;
+            player.fireRateMod *= .8f;
             if (player.gun != null)
                 player.gun.fireRate *= player.fireRateMod;
             Btn_Gear.image.color = Color.yellow;
@@ -117,7 +117,7 @@ public class SkillTree : MonoBehaviour
         {
             print("cross Button");
             tier4 = true;
-            player.bulletSpeedMod = 1.7f;
+            player.bulletSpeedMod += .3f;
             if (player.gun != null)
                 player.gun.bulletSpeed *= player.bulletSpeedMod;
             Btn_Cross.image.color = Color.yellow;
