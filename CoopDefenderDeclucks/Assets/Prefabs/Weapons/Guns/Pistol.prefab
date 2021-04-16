@@ -338,6 +338,7 @@ MonoBehaviour:
   bulletType: {fileID: 5195216325663097875, guid: 3f769bb4b951e0049b3f7a60fdc01ca0,
     type: 3}
   ShootSound: {fileID: 5842402066871964534}
+  player: {fileID: 0}
 --- !u!54 &8637804148176224771
 Rigidbody:
   m_ObjectHideFlags: 0
