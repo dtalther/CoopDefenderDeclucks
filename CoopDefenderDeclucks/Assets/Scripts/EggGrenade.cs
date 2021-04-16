@@ -5,6 +5,7 @@ using UnityEngine;
 public class EggGrenade : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float lingerTime;
     void Start()
     {
         StartCoroutine(SelfDestruct());
@@ -24,7 +25,7 @@ public class EggGrenade : MonoBehaviour
     }
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(lingerTime);
         Destroy(gameObject);
     }
 }

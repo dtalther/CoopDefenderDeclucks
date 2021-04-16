@@ -28,8 +28,13 @@ public class PlayerController : MonoBehaviour
     public bool isRapidFire;
 
     public MainMenu gameManager;
+    public GameObject Talent_Tree;
 
-    public int eggCount;//How many egg grenades you have
+    public int grenadeCount;//How many egg grenades you have
+    public float fireRateMod;
+    public float bulletSpeedMod;
+   
+
     public GameObject grenadeType;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +46,10 @@ public class PlayerController : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         lookPoint = transform.forward;
         gameManager = FindObjectOfType<MainMenu>();
-        eggCount = 3;
+        grenadeCount = 3;
+      
+        fireRateMod = 1;
+        bulletSpeedMod = 1;
     }
 
     // Update is called once per frame
@@ -129,13 +137,23 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (eggCount > 0)
+            if (grenadeCount > 0)
             {
                 eggxplosion();
-                eggCount--;
+                grenadeCount--;
             }
 
         }
+        if (Input.GetKeyDown(KeyCode.Tab) && Talent_Tree.activeSelf == false)
+        {
+            Talent_Tree.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && Talent_Tree.activeSelf == true)
+        {
+            Talent_Tree.SetActive(false);
+        }
+            
+        
     }
     //Consistant. Not based on frame rate.
     void FixedUpdate()
@@ -149,7 +167,7 @@ public class PlayerController : MonoBehaviour
     }
     void eggxplosion()
     {
-        EggGrenade grenade = Instantiate(grenadeType,this.transform.position,this.transform.rotation).GetComponent<EggGrenade>();
+        GameObject grenade = Instantiate(grenadeType, this.transform.position, this.transform.rotation);
         //grenade.gameObject.transform.position = this.gameObject.transform.position;
     }
 

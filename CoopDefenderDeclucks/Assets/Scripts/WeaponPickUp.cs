@@ -32,6 +32,7 @@ public class WeaponPickUp : MonoBehaviour
         newGun.transform.parent = var.gameObject.transform;
         newGun.transform.position = var.gameObject.transform.position + var.gameObject.transform.forward;
         newGun.transform.rotation = new Quaternion(0,0,0,0);
-        
+        var.gun.fireRate *= var.fireRateMod;
+        var.gun.bulletSpeed *= var.bulletSpeedMod;
     }
 }
