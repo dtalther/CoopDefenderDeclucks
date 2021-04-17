@@ -47,7 +47,7 @@ public class Enemy4AI : EnemyAI
         {
             Death();
         }
-        else if (collision.gameObject.tag.Equals("Coop"))
+        else if (collision.gameObject == target.gameObject)
         {
             Destroy(collision.gameObject);
         }
