@@ -28,12 +28,15 @@ public class PlayerController : MonoBehaviour
     public bool isRapidFire;
 
     public MainMenu gameManager;
+    private Animator animator;
     public GameObject Talent_Tree;
 
     public int grenadeCount;//How many egg grenades you have
     public float fireRateMod;
     public float bulletSpeedMod;
-   
+
+    public int scoreForNextPoint;
+    public int skillPoints;
 
     public GameObject grenadeType;
     // Start is called before the first frame update
@@ -46,17 +49,31 @@ public class PlayerController : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         lookPoint = transform.forward;
         gameManager = FindObjectOfType<MainMenu>();
+        animator = GetComponent<Animator>();
         grenadeCount = 3;
-      
+        skillPoints = 0;
         fireRateMod = 1;
         bulletSpeedMod = 1;
+        scoreForNextPoint = 1000;
     }
 
     // Update is called once per frame
     void Update()
     {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-            moveVelocity = moveInput * moveSpeed;
+
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveVelocity = moveInput * moveSpeed;
+            
+        //If player is not moving, play idle animation, else play running animation
+        if(!Vector3.Equals(moveInput, Vector3.zero))
+        {
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+        }
+            
 
             #region Code for Power-Up Timers
             if (timeSlowTimer > 0)//Checks to see if time slow power up is active
@@ -67,6 +84,7 @@ public class PlayerController : MonoBehaviour
                     timeSlowTimer = 0;
                     isTimeSlowed = false;
                     Time.timeScale = 1;
+                    Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 }
             }
             if (spreggShotTimer > 0)
@@ -123,6 +141,13 @@ public class PlayerController : MonoBehaviour
         {
             Talent_Tree.SetActive(false);
         }
+
+        if (gameManager.score >= scoreForNextPoint)
+        {
+            skillPoints++;
+            grenadeCount++;
+            scoreForNextPoint += scoreForNextPoint * 2;
+        }
             
         
     }
@@ -151,6 +176,7 @@ public class PlayerController : MonoBehaviour
                 isTimeSlowed = true;
                 timeSlowTimer += timeSlowAmount;
                 Time.timeScale = 0.5f;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 Destroy(other.gameObject);
                 break;
             case "SpreggShot":
