@@ -26,7 +26,7 @@ public class SkillTree : MonoBehaviour
     public 
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
+        player = GameObject.FindObjectOfType<PlayerController>();
         tier1 = false;
         tier2 = false;
         tier3 = false;
