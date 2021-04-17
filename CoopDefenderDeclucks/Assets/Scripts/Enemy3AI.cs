@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy3AI : MonoBehaviour
+public class Enemy3AI : EnemyAI
 {
     public Transform target;
     public NavMeshAgent move;
     public float speed;
     public float changeDirection;
+
+   
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
         move = GetComponent<NavMeshAgent>();
+        
         //move.stoppingDistance = 0f;
         //move.radius = .5f;
     }
@@ -45,11 +48,12 @@ public class Enemy3AI : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Destroy(gameObject);
+            Death();
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
             Destroy(collision.gameObject);
         }
     }
+    
 }

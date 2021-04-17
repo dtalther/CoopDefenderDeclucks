@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy2AI : MonoBehaviour
+public class Enemy2AI : EnemyAI
 {
     public Transform target;
     public NavMeshAgent move;
     public float speed;
     public float dash;
     public float range;
+
+   
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
@@ -18,6 +20,7 @@ public class Enemy2AI : MonoBehaviour
         move.stoppingDistance = 0f;
         move.radius = .5f;
         move.speed = speed;
+       
     }
     // Update is called once per frame
     void Update()
@@ -41,11 +44,12 @@ public class Enemy2AI : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Destroy(gameObject);
+            Death();
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
             Destroy(collision.gameObject);
         }
     }
+   
 }

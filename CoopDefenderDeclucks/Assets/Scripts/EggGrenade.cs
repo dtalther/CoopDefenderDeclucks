@@ -20,7 +20,7 @@ public class EggGrenade : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<EnemyAI>().Death();
         }
     }
     IEnumerator SelfDestruct()
