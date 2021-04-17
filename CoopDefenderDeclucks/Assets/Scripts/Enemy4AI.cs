@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy4AI : MonoBehaviour
+public class Enemy4AI : EnemyAI
 {
     public Transform target;
     public NavMeshAgent move;
     public float speed;
     public float randomDirection;
+
+    
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
         randomDirection = Random.value;
-        target = GameObject.Find("Player").transform;
+        target = GameObject.FindObjectOfType<PlayerController>().transform;
         move = GetComponent<NavMeshAgent>();
+        
+        //move.stoppingDistance = 0f;
+        //move.radius = .5f;
     }
     // Update is called once per frame
     void Update()
@@ -22,15 +27,17 @@ public class Enemy4AI : MonoBehaviour
         if (target != null)
         {
             move.SetDestination(target.position);
-            transform.LookAt(target);
+            move.speed = speed;
+            
+           transform.LookAt(target);
             transform.position += transform.forward * speed * Time.deltaTime;
             if (randomDirection % 2 == 0)
             {
-                transform.position += transform.right * speed * Time.deltaTime;
+                move.Move( transform.right * speed * Time.deltaTime);
             }
             else
             {
-                transform.position += -transform.right * speed * Time.deltaTime;
+                move.Move(-transform.right * speed * Time.deltaTime);
             }
         }
     }
@@ -38,11 +45,12 @@ public class Enemy4AI : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Destroy(gameObject);
+            Death();
         }
-        else if (collision.gameObject.tag.Equals("Player"))
+        else if (collision.gameObject == target.gameObject)
         {
             Destroy(collision.gameObject);
         }
     }
+   
 }

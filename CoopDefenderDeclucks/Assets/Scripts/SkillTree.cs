@@ -15,6 +15,7 @@ public class SkillTree : MonoBehaviour
     [SerializeField] private Button Btn_Gear;
     [SerializeField] private Button Btn_Cross;
     [SerializeField] private Button Btn_Egg;
+    [SerializeField] private Text SkillPoints;
 
     public PlayerController player;
     public GameObject gren1;
@@ -37,7 +38,7 @@ public class SkillTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        SkillPoints.text = "Skill Points: "+player.skillPoints+"";
     }
     //First Tier
     public void pawButton()
@@ -49,6 +50,7 @@ public class SkillTree : MonoBehaviour
             tier1 = true;
             GameObject button = GameObject.Find("Paw_Button");
             Btn_Paw.image.color = Color.yellow;
+            player.skillPoints--;
 
         }
         else
@@ -57,7 +59,7 @@ public class SkillTree : MonoBehaviour
     //Second Tier
     public void bulletButton()
     {
-        if (tier1 == true && tier2 == false)
+        if (tier1 == true && tier2 == false && player.skillPoints > 0)
         {
             print("BulletButton");
             tier2 = true;
@@ -65,13 +67,14 @@ public class SkillTree : MonoBehaviour
             if (player.gun != null)
                 player.gun.bulletSpeed *= player.bulletSpeedMod;
             Btn_Bullet.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
     }
     public void gunButton()
     {
-        if (tier1 == true && tier2 == false)
+        if (tier1 == true && tier2 == false && player.skillPoints > 0)
         {
             print("Gun Button");
             tier2 = true;
@@ -79,6 +82,7 @@ public class SkillTree : MonoBehaviour
             if(player.gun != null)
                 player.gun.fireRate *= player.fireRateMod;
             Btn_Gun.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
@@ -86,12 +90,13 @@ public class SkillTree : MonoBehaviour
     //Third Tier
     public void nuclearButton()
     {
-        if (tier2 == true && tier3 == false)
+        if (tier2 == true && tier3 == false && player.skillPoints > 0)
         {
             print("Nuke Button");
             tier3 = true;
             player.grenadeType = gren2;
             Btn_Nuclear.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
@@ -99,7 +104,7 @@ public class SkillTree : MonoBehaviour
     //Fourth Tier
     public void gearButton()
     {
-        if (tier3 == true && tier4 == false)
+        if (tier3 == true && tier4 == false && player.skillPoints > 0)
         {
             print("Gear Button");
             tier4 = true;
@@ -107,13 +112,14 @@ public class SkillTree : MonoBehaviour
             if (player.gun != null)
                 player.gun.fireRate *= player.fireRateMod;
             Btn_Gear.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
     }
     public void crosshairButton()
     {
-        if (tier3 == true && tier4 == false)
+        if (tier3 == true && tier4 == false && player.skillPoints > 0)
         {
             print("cross Button");
             tier4 = true;
@@ -121,6 +127,7 @@ public class SkillTree : MonoBehaviour
             if (player.gun != null)
                 player.gun.bulletSpeed *= player.bulletSpeedMod;
             Btn_Cross.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
@@ -128,12 +135,13 @@ public class SkillTree : MonoBehaviour
     //Fifth Tier
     public void eggButton()
     {
-        if (tier4 == true && tier5 == false)
+        if (tier4 == true && tier5 == false && player.skillPoints > 0)
         {
             print("EGG Button");
             tier5 = true;
             player.grenadeType = gren3;
             Btn_Egg.image.color = Color.yellow;
+            player.skillPoints--;
         }
         else
             print("Not allowed Button");
