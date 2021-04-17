@@ -42,7 +42,7 @@ public class SkillTree : MonoBehaviour
     //First Tier
     public void pawButton()
     {
-        if (tier1 == false)
+        if (tier1 == false && player.skillPoints > 0)
         {
             print("Paw Button");
             player.moveSpeed = 13;
