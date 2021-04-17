@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if (gameManager.score >= scoreForNextPoint)
         {
             skillPoints++;
+            grenadeCount++;
             scoreForNextPoint += scoreForNextPoint * 2;
         }
             
