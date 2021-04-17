@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool isRapidFire;
 
     public MainMenu gameManager;
+    private Animator animator;
     public GameObject Talent_Tree;
 
     public int grenadeCount;//How many egg grenades you have
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         lookPoint = transform.forward;
         gameManager = FindObjectOfType<MainMenu>();
+        animator = GetComponent<Animator>();
         grenadeCount = 3;
         skillPoints = 0;
         fireRateMod = 1;
@@ -58,8 +60,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-            moveVelocity = moveInput * moveSpeed;
+
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveVelocity = moveInput * moveSpeed;
+            
+        //If player is not moving, play idle animation, else play running animation
+        if(!Vector3.Equals(moveInput, Vector3.zero))
+        {
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+        }
+            
 
             #region Code for Power-Up Timers
             if (timeSlowTimer > 0)//Checks to see if time slow power up is active
