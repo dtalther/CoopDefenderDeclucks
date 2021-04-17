@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
                     timeSlowTimer = 0;
                     isTimeSlowed = false;
                     Time.timeScale = 1;
+                    Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 }
             }
             if (spreggShotTimer > 0)
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
                 isTimeSlowed = true;
                 timeSlowTimer += timeSlowAmount;
                 Time.timeScale = 0.5f;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 Destroy(other.gameObject);
                 break;
             case "SpreggShot":
