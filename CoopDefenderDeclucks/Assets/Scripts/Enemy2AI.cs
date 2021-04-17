@@ -15,6 +15,9 @@ public class Enemy2AI : MonoBehaviour
     {
         target = GameObject.Find("Player").transform;
         move = GetComponent<NavMeshAgent>();
+        move.stoppingDistance = 0f;
+        move.radius = .5f;
+        move.speed = speed;
     }
     // Update is called once per frame
     void Update()
@@ -23,15 +26,15 @@ public class Enemy2AI : MonoBehaviour
         {
             float distance = Vector3.Distance(target.position, transform.position);
             move.SetDestination(target.position);
-            transform.LookAt(target);
-            if (distance <= range)
+            //transform.LookAt(target);
+            /*if (distance <= range)
             {
                 transform.position += transform.forward * (speed + dash) * Time.deltaTime;
             }
             else
             {
                 transform.position += transform.forward * speed * Time.deltaTime;
-            }
+            }*/
         }
     }
     void OnTriggerEnter(Collider collision)

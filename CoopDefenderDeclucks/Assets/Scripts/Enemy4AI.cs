@@ -13,8 +13,10 @@ public class Enemy4AI : MonoBehaviour
     private void Awake()
     {
         randomDirection = Random.value;
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("Coop").transform;
         move = GetComponent<NavMeshAgent>();
+        //move.stoppingDistance = 0f;
+        //move.radius = .5f;
     }
     // Update is called once per frame
     void Update()
@@ -22,15 +24,17 @@ public class Enemy4AI : MonoBehaviour
         if (target != null)
         {
             move.SetDestination(target.position);
-            transform.LookAt(target);
+            move.speed = speed;
+            
+           transform.LookAt(target);
             transform.position += transform.forward * speed * Time.deltaTime;
             if (randomDirection % 2 == 0)
             {
-                transform.position += transform.right * speed * Time.deltaTime;
+                move.Move( transform.right * speed * Time.deltaTime);
             }
             else
             {
-                transform.position += -transform.right * speed * Time.deltaTime;
+                move.Move(-transform.right * speed * Time.deltaTime);
             }
         }
     }
@@ -40,7 +44,7 @@ public class Enemy4AI : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (collision.gameObject.tag.Equals("Player"))
+        else if (collision.gameObject.tag.Equals("Coop"))
         {
             Destroy(collision.gameObject);
         }

@@ -14,6 +14,8 @@ public class Enemy3AI : MonoBehaviour
     {
         target = GameObject.Find("Player").transform;
         move = GetComponent<NavMeshAgent>();
+        //move.stoppingDistance = 0f;
+        //move.radius = .5f;
     }
     // Update is called once per frame
     void Update()
