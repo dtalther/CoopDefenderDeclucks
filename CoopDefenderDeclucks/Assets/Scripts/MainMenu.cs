@@ -104,6 +104,7 @@ public class MainMenu : MonoBehaviour
                 score = 0;
                 setGameplayScore(score);
                 Time.timeScale = 1;
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 Btn_ClassicMode.gameObject.SetActive(true);
                 Btn_CampaignMode.gameObject.SetActive(true);
                 Btn_Resume.gameObject.SetActive(false);
@@ -122,6 +123,7 @@ public class MainMenu : MonoBehaviour
     public void pauseGame()
     {
         previousTimeScale = Time.timeScale;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
         isPaused = true;
         //menuCanvas.enabled = true;
         Btn_Resume.gameObject.SetActive(true);
@@ -138,6 +140,7 @@ public class MainMenu : MonoBehaviour
         Btn_QuitGame.gameObject.SetActive(false);
         //menuCanvas.gameObject.SetActive(false);
         Time.timeScale = previousTimeScale;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
         //menuCanvas.enabled = false;
     }
 
