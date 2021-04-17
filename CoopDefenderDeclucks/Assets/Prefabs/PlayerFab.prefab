@@ -44,11 +44,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   gun: {fileID: 0}
-  timeSlowAmount: 0
+  timeSlowAmount: 5
   isTimeSlowed: 0
-  spreggShotAmount: 0
+  spreggShotAmount: 5
   isSpregg: 0
-  rapidFireAmount: 0
+  rapidFireAmount: 5
   isRapidFire: 0
   gameManager: {fileID: 0}
   Talent_Tree: {fileID: 0}
