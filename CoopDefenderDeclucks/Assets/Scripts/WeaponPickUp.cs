@@ -7,7 +7,12 @@ public class WeaponPickUp : MonoBehaviour
     // Start is called before the first frame update
     public GameObject obj;
     public AudioSource pickupSound;
-    
+    public Vector3 offset;//Offset to adjust gun properly
+
+    void Start()
+    {
+        offset = new Vector3(0, .75f, 0);
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +35,7 @@ public class WeaponPickUp : MonoBehaviour
         
         Object.Destroy(this.gameObject);
         newGun.transform.parent = var.gameObject.transform;
-        newGun.transform.position = var.gameObject.transform.position + var.gameObject.transform.forward;
+        newGun.transform.position = var.gameObject.transform.position + var.gameObject.transform.forward + offset;
         newGun.transform.rotation = new Quaternion(0,0,0,0);
         var.gun.fireRate *= var.fireRateMod;
         var.gun.bulletSpeed *= var.bulletSpeedMod;
