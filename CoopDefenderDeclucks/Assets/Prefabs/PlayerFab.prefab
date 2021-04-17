@@ -29,7 +29,7 @@ CapsuleCollider:
   m_Radius: 0.19972879
   m_Height: 0.6112485
   m_Direction: 1
-  m_Center: {x: -0.003273189, y: 0.23, z: 0.02}
+  m_Center: {x: -0.003273189, y: 0.27, z: 0.02}
 --- !u!114 &7080061030780350558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +55,8 @@ MonoBehaviour:
   grenadeCount: 0
   fireRateMod: 0
   bulletSpeedMod: 0
+  scoreForNextPoint: 0
+  skillPoints: 0
   grenadeType: {fileID: 8604230263756478310, guid: 89d1cddd11ff0f44480799e271807644,
     type: 3}
 --- !u!1 &4773825811469487952

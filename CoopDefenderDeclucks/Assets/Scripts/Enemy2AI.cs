@@ -13,9 +13,9 @@ public class Enemy2AI : EnemyAI
 
    
     //Alerts enemies to the location of the player at all times
-    private void Awake()
+    private void Start()
     {
-        target = GameObject.Find("Player").transform;
+        target = GameObject.FindObjectOfType<PlayerController>().transform;
         move = GetComponent<NavMeshAgent>();
         move.stoppingDistance = 0f;
         move.radius = .5f;
