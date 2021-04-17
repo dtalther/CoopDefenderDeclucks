@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy1AI : EnemyAI
+public class Enemy1AI : MonoBehaviour
 {
 
     public Transform target;
     public NavMeshAgent move;
     public float speed;
-   
     //Alerts enemies to the location of the player at all times
     private void Awake()
     {
         target = GameObject.Find("Coop").transform;
         move = GetComponent<NavMeshAgent>();
-        
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +29,7 @@ public class Enemy1AI : EnemyAI
     {
         if (collision.gameObject.tag.Equals("Bullet"))
         {
-            Death();
+            Destroy(gameObject);
         }
         else if (collision.gameObject.tag.Equals("Player"))
         {
@@ -42,6 +40,4 @@ public class Enemy1AI : EnemyAI
             Destroy(collision.gameObject);
         }
     }
-
-    
 }

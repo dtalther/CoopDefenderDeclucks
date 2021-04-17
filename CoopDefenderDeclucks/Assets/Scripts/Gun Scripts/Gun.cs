@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     {
         print("Wee are in the default shoot");
         if (player.isRapidFire)//Checks to see if rapid fire power up has been picked up
-            currentFireRate = fireRate * 0.8f;
+            currentFireRate = fireRate - 0.25f;
         else if (currentFireRate != fireRate)
             currentFireRate = fireRate;
 

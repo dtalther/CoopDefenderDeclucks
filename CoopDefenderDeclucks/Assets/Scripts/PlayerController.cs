@@ -33,9 +33,7 @@ public class PlayerController : MonoBehaviour
     public int grenadeCount;//How many egg grenades you have
     public float fireRateMod;
     public float bulletSpeedMod;
-
-    public int scoreForNextPoint;
-    public int skillPoints;
+   
 
     public GameObject grenadeType;
     // Start is called before the first frame update
@@ -49,10 +47,9 @@ public class PlayerController : MonoBehaviour
         lookPoint = transform.forward;
         gameManager = FindObjectOfType<MainMenu>();
         grenadeCount = 3;
-        skillPoints = 0;
+      
         fireRateMod = 1;
         bulletSpeedMod = 1;
-        scoreForNextPoint = 1000;
     }
 
     // Update is called once per frame
@@ -126,12 +123,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Tab) && Talent_Tree.activeSelf == true)
         {
             Talent_Tree.SetActive(false);
-        }
-
-        if (gameManager.score >= scoreForNextPoint)
-        {
-            skillPoints++;
-            scoreForNextPoint += scoreForNextPoint * 2;
         }
             
         
