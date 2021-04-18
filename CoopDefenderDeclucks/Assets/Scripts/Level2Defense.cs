@@ -10,6 +10,8 @@ public class Level2Defense : MonoBehaviour
     public GameObject chicken;
     public GameObject endstate;
 
+    public float defenseTime;
+
     private Level2_Text canvas;
     void Start()
     {
@@ -33,7 +35,7 @@ public class Level2Defense : MonoBehaviour
     IEnumerator Defense(GameObject text)
     {
         print("Starting Defense!");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(defenseTime);
         canvas.TextDeactivate(text);
         print("Create Explosion");
         Instantiate(explosion,this.transform.position,this.transform.rotation);
