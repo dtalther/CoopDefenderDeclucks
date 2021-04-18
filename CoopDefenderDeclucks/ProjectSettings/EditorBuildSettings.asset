@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level0.unity
     guid: 446ec7d8d3a4bb24fa8566a326ad0f77
   - enabled: 1
-    path: Assets/Scenes/CampaignLevel0.unity
-    guid: ee76c14d6d15e3c48bfa3cfb6c675564
+    path: Assets/Scenes/CampaignLevel1.unity
+    guid: 3ebf5ee225a84da4c8ded7752126075f
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel_2.unity
+    guid: d1c5580add73321488a514ab5867d1cf
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel_3.unity
+    guid: d9182050a982829428d72815db4f7658
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 425de05de00eacf4092404ff041137ef
   m_configObjects: {}
