@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         #endregion
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-       float rayLength;
+        float rayLength;
 
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
@@ -119,12 +119,12 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
         }
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.timeScale > 0)
         {
             if (gun != null)
                 gun.shoot(lookPoint);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale > 0)
         {
             if (grenadeCount > 0)
             {
