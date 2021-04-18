@@ -16,6 +16,7 @@ public class SkillTree : MonoBehaviour
     [SerializeField] private Button Btn_Cross;
     [SerializeField] private Button Btn_Egg;
     [SerializeField] private Text SkillPoints;
+    [SerializeField] private Text Skill_Alert;
 
     public PlayerController player;
     public GameObject gren1;
@@ -39,6 +40,13 @@ public class SkillTree : MonoBehaviour
     void Update()
     {
         SkillPoints.text = "Skill Points: "+player.skillPoints+"";
+        if (player.skillPoints > 0)
+        {
+            Skill_Alert.text = "You have " + player.skillPoints + " skill points\nPress Tab to Open Skill Tree";
+            Skill_Alert.gameObject.SetActive(true);
+        }
+        else
+            Skill_Alert.gameObject.SetActive(false);
     }
     //First Tier
     public void pawButton()
