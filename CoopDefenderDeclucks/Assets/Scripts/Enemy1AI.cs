@@ -27,17 +27,11 @@ public class Enemy1AI : EnemyAI
             transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
-    void OnTriggerEnter(Collider collision)
+
+    protected override void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag.Equals("Bullet"))
-        {
-            Death();
-        }
-        else if (collision.gameObject.tag.Equals("Player"))
-        {
-            Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.tag.Equals("Coop"))
+        base.OnTriggerEnter(collision);
+        if (collision.gameObject.tag.Equals("Coop"))
         {
             collision.gameObject.SetActive(false);
         }

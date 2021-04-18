@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
         moveVelocity = moveInput * moveSpeed;
-            
+
         //If player is not moving, play idle animation, else play running animation
         if(!Vector3.Equals(moveInput, Vector3.zero))
         {
@@ -192,4 +192,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Clean up code for when player dies
+    public void PlayerDeath()
+    {
+        if (gameManager.score > gameManager.highScore)
+        {
+            gameManager.getSaveManager().SaveScore(gameManager.score);
+            gameManager.setHighScore(gameManager.score);
+            gameManager.setGameState(false);
+        }
+        Destroy(gameObject);
+    }
 }

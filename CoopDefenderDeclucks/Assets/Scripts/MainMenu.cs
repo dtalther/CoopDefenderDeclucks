@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     protected SavePrefs saveManager;
 
     public bool isPaused;//Determines whether the game is paused or not
+    private bool isGameplaying;//Determines whether the player is playing a game mode or not
 
     public int currentScene;//Represents the current scene in play
 
@@ -43,6 +44,7 @@ public class MainMenu : MonoBehaviour
 
         setHighScore(highScore);
 
+        isGameplaying = false;
         score = 0;
         previousTimeScale = 0;
         isPaused = false;
@@ -60,11 +62,11 @@ public class MainMenu : MonoBehaviour
     {
         //gameplayScorePos = new Vector3(Scree, Screen.height/2.15f, 0);
         //Pauses game if player presses escape and game is not paused
-        if(Input.GetKeyDown(KeyCode.Escape) && isPaused == false && currentScene != 0)
+        if(Input.GetKeyDown(KeyCode.Escape) && isPaused == false && currentScene != 0 && isGameplaying)
         {
             pauseGame();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused == true && currentScene != 0)
+        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused == true && currentScene != 0 && isGameplaying)
         {
             unpauseGame();
         }
@@ -87,6 +89,7 @@ public class MainMenu : MonoBehaviour
             currentScene = sceneValue;
             if(currentScene > 0)//When scene updates, update menu
             {
+                isGameplaying = true;
                 score = 0;
                 setGameplayScore(score);
                 Txt_Title.gameObject.SetActive(false);
@@ -101,6 +104,7 @@ public class MainMenu : MonoBehaviour
             }
             else if(currentScene < 1)//If scene val is less than 1, load main menu
             {
+                isGameplaying = false;
                 score = 0;
                 setGameplayScore(score);
                 Time.timeScale = 1;
@@ -150,10 +154,22 @@ public class MainMenu : MonoBehaviour
         Txt_GameplayScore.text = "Score:  " + score;
     }
 
+    //sets high score text
     public void setHighScore(int scoreVal)
     {
         highScore = scoreVal;
-        Txt_HighScore.text = "High Score:  " + highScore;
+        Txt_HighScore.text = "Classic Mode High Score:  " + highScore;
     }
 
+    //Returns save manager
+    public SavePrefs getSaveManager()
+    {
+        return saveManager;
+    }
+
+    //Sets the game state
+    public void setGameState(bool state)
+    {
+        isGameplaying = state;
+    }
 }
