@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     private bool isGameplaying;//Determines whether the player is playing a game mode or not
 
     public int currentScene;//Represents the current scene in play
+    public int previousLevel;//Represents the previous level that the player was in
 
     public int score;//current score of the player during gameplay
     public int highScore;//Highest recorded score from the player
@@ -51,6 +52,7 @@ public class MainMenu : MonoBehaviour
         previousTimeScale = 0;
         isPaused = false;
         currentScene = 0;
+        previousLevel = 0;
         Btn_Resume.gameObject.SetActive(false);
         menuCanvas = transform.GetChild(0).GetComponent<Canvas>();
 
@@ -74,6 +76,12 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //Restarts whatever current level the player was on
+    public void restartLevel()
+    {
+        startMode(previousLevel);
+    }
+
     //Overloaded method for button presses
     public void startMode(int sceneValue)
     {
@@ -83,6 +91,7 @@ public class MainMenu : MonoBehaviour
     //Starts a scene based on its scene value
     public void startMode(int sceneValue, bool switchScenes)
     {
+        previousLevel = currentScene;
         //If the the scene value is 0 and the current scene is 0, quit the game
         if (sceneValue == 0 && currentScene == 0)
             Application.Quit();
@@ -91,11 +100,19 @@ public class MainMenu : MonoBehaviour
             currentScene = sceneValue;
             if(currentScene > 0)//When scene updates, update menu
             {
-                isGameplaying = true;
-                score = 0;
+                if (currentScene < 5)//If not on end screen, do the following
+                {
+                    score = 0;
+                    isGameplaying = true;
+                    Txt_GameplayScore.gameObject.SetActive(true);
+                }
+                else//else if on end screen
+                {
+                    isGameplaying = false;
+                    Txt_GameplayScore.gameObject.SetActive(false);
+                }
                 setGameplayScore(score);
                 Txt_Title.gameObject.SetActive(false);
-                Txt_GameplayScore.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(false);
 
                 Btn_ClassicMode.gameObject.SetActive(false);
