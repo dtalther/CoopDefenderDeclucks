@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public float fireRateMod;
     public float bulletSpeedMod;
 
+    public bool isDead;
     public int scoreForNextPoint;
     public int skillPoints;
 
@@ -55,6 +56,7 @@ public class PlayerController : MonoBehaviour
         fireRateMod = 1;
         bulletSpeedMod = 1;
         scoreForNextPoint = 1000;
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -201,6 +203,7 @@ public class PlayerController : MonoBehaviour
             gameManager.setHighScore(gameManager.score);
             gameManager.setGameState(false);
         }
+
         Destroy(gameObject);
     }
 }

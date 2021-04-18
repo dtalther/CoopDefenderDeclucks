@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button Btn_ClassicMode;
-    [SerializeField] private Button Btn_CampaignMode;
+    [SerializeField] private Button Btn_CampaignLevel1;
+    [SerializeField] private Button Btn_CampaignLevel2;
+    [SerializeField] private Button Btn_CampaignLevel3;
     [SerializeField] private Button Btn_QuitGame;
     [SerializeField] private Button Btn_Resume;
     [SerializeField] private Text Txt_Title;
@@ -95,23 +97,35 @@ public class MainMenu : MonoBehaviour
                 Txt_Title.gameObject.SetActive(false);
                 Txt_GameplayScore.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(false);
+
                 Btn_ClassicMode.gameObject.SetActive(false);
-                Btn_CampaignMode.gameObject.SetActive(false);
                 Btn_QuitGame.gameObject.SetActive(false);
+
+                Btn_CampaignLevel1.gameObject.SetActive(false);
+                Btn_CampaignLevel2.gameObject.SetActive(false);
+                Btn_CampaignLevel3.gameObject.SetActive(false);
+
                 //Btn_Resume.gameObject.SetActive(true);
                 isPaused = false;
                 //menuCanvas.gameObject.SetActive(false);
             }
             else if(currentScene < 1)//If scene val is less than 1, load main menu
             {
+                print("saved high score data is " + saveManager.GetBestScore());
                 isGameplaying = false;
                 score = 0;
-                setGameplayScore(score);
+                setHighScore(highScore);
                 Time.timeScale = 1;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
                 Btn_ClassicMode.gameObject.SetActive(true);
-                Btn_CampaignMode.gameObject.SetActive(true);
                 Btn_Resume.gameObject.SetActive(false);
+
+                Btn_CampaignLevel1.gameObject.SetActive(true);
+                Btn_CampaignLevel2.gameObject.SetActive(true);
+                Btn_CampaignLevel3.gameObject.SetActive(true);
+                checkCampaignLevelStatus();
+
                 Txt_Title.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(true);
                 Txt_GameplayScore.gameObject.SetActive(false);
@@ -119,7 +133,7 @@ public class MainMenu : MonoBehaviour
                 //menuCanvas.gameObject.SetActive(true);
             }
             if(switchScenes == true)
-                SceneManager.LoadScene(sceneValue);
+                SceneManager.LoadScene(currentScene);
         }
     }
 
@@ -158,7 +172,7 @@ public class MainMenu : MonoBehaviour
     public void setHighScore(int scoreVal)
     {
         highScore = scoreVal;
-        Txt_HighScore.text = "Classic Mode High Score:  " + highScore;
+        Txt_HighScore.text = "High Score:  " + highScore;
     }
 
     //Returns save manager
@@ -171,5 +185,18 @@ public class MainMenu : MonoBehaviour
     public void setGameState(bool state)
     {
         isGameplaying = state;
+    }
+
+    //Activates buttons based on campaign level status
+    public void checkCampaignLevelStatus()
+    {
+        if(saveManager.GetLevelsCompleted() == 1)
+        {
+            Btn_CampaignLevel2.interactable = true;
+        }
+        if(saveManager.GetLevelsCompleted() >= 2)
+        {
+            Btn_CampaignLevel3.interactable = true;
+        }
     }
 }
