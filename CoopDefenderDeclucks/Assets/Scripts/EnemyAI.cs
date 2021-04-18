@@ -13,9 +13,13 @@ public class EnemyAI : MonoBehaviour
     public GameObject shotgun;
     public GameObject machinegun;
 
+    protected PlayerController player;
+
     private bool isDead;
+
     void Awake()
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
         menu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
         isDead = false;
     }
@@ -40,7 +44,8 @@ public class EnemyAI : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Player":
-                collision.gameObject.GetComponent<PlayerController>().PlayerDeath();
+                if(player != null)
+                    player.PlayerDeath();
                 break;
             case "Bullet":
                 dropItem();

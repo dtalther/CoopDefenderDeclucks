@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public int scoreForNextPoint;
     public int skillPoints;
 
+    private float baseSpeed;
+
     public GameObject grenadeType;
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
         bulletSpeedMod = 1;
         scoreForNextPoint = 1000;
         isDead = false;
+        baseSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
                     timeSlowTimer = 0;
                     isTimeSlowed = false;
                     Time.timeScale = 1;
+                    moveSpeed = baseSpeed;
                     Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 }
             }
@@ -108,6 +112,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         #endregion
+        
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -157,8 +162,6 @@ public class PlayerController : MonoBehaviour
         //myRigidbody.AddForce(moveVelocity);
         moveVelocity.y = myRigidbody.velocity.y;
         myRigidbody.velocity = moveVelocity;
-        
-
       
     }
     void eggxplosion()
@@ -177,6 +180,7 @@ public class PlayerController : MonoBehaviour
                 timeSlowTimer += timeSlowAmount;
                 Time.timeScale = 0.5f;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
+                moveSpeed = baseSpeed * 1.25f;
                 Destroy(other.gameObject);
                 break;
             case "SpreggShot":
