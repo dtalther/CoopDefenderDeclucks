@@ -13,6 +13,12 @@ public class SavePrefs : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void ResetSave()
+    {
+        PlayerPrefs.DeleteKey("HighScoreData");
+        Debug.Log("Save data reset...");
+    }
+
     public void LoadGameData()
     {
         if (PlayerPrefs.HasKey("HighScoreData"))

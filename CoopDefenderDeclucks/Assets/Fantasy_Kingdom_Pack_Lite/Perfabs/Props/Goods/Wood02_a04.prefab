@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 425708}
   - component: {fileID: 3350976}
   - component: {fileID: 2341200}
-  - component: {fileID: 6410110}
+  - component: {fileID: 1507685490308573510}
   m_Layer: 0
   m_Name: Wood02_a04
   m_TagString: Untagged
@@ -81,8 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6410110
-MeshCollider:
+--- !u!65 &1507685490308573510
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,7 +91,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 176ad187f9a116b4cb3eeb6f306d3952, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5395336, y: 1.132814, z: 1.4662057}
+  m_Center: {x: 0.0000006556511, y: 0.5664063, z: -0.000002682209}

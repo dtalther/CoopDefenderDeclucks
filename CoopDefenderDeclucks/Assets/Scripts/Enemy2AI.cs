@@ -40,16 +40,5 @@ public class Enemy2AI : EnemyAI
             }*/
         }
     }
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag.Equals("Bullet"))
-        {
-            Death();
-        }
-        else if (collision.gameObject.tag.Equals("Player"))
-        {
-            Destroy(collision.gameObject);
-        }
-    }
    
 }

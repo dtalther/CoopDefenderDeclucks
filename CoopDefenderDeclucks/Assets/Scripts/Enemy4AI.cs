@@ -41,16 +41,6 @@ public class Enemy4AI : EnemyAI
             }
         }
     }
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag.Equals("Bullet"))
-        {
-            Death();
-        }
-        else if (collision.gameObject == target.gameObject)
-        {
-            Destroy(collision.gameObject);
-        }
-    }
+
    
 }

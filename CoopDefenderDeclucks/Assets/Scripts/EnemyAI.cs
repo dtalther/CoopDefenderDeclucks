@@ -22,4 +22,17 @@ public class EnemyAI : MonoBehaviour
         menu.setGameplayScore(menu.score);
         Destroy(gameObject);
     }
+
+    protected virtual void OnTriggerEnter(Collider collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Player":
+                collision.gameObject.GetComponent<PlayerController>().PlayerDeath();
+                break;
+            case "Bullet":
+                Death();
+                break;
+        }
+    }
 }
