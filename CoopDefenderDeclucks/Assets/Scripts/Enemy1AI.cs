@@ -14,8 +14,10 @@ public class Enemy1AI : EnemyAI
     private void Start()
     {
         target = GameObject.Find("Coop").transform;
+       // target = GameObject.FindObjectOfType<PlayerController>().transform;
         move = GetComponent<NavMeshAgent>();
-        
+        move.speed = speed;
+
     }
     // Update is called once per frame
     void Update()
@@ -23,8 +25,8 @@ public class Enemy1AI : EnemyAI
         if (target != null)
         {
             move.SetDestination(target.position);
-            transform.LookAt(target);
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.LookAt(target);
+            //transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 
