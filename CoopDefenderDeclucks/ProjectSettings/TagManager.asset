@@ -8,6 +8,9 @@ TagManager:
   - SpreggShot
   - Bullet
   - Coop
+  - RapidFire
+  - TimeSlow
+  - Ally
   layers:
   - Default
   - TransparentFX
