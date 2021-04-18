@@ -11,7 +11,7 @@ public class Enemy1AI : EnemyAI
     public float speed;
    
     //Alerts enemies to the location of the player at all times
-    private void Awake()
+    private void Start()
     {
         target = GameObject.Find("Coop").transform;
         move = GetComponent<NavMeshAgent>();
@@ -39,7 +39,7 @@ public class Enemy1AI : EnemyAI
         }
         else if (collision.gameObject.tag.Equals("Coop"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 

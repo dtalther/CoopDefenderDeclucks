@@ -6,7 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     // Start is called before the first frame update
     public MainMenu menu;
-    void Start()
+    void Awake()
     {
         menu = GameObject.Find("MainMenu").GetComponent<MainMenu>();
     }

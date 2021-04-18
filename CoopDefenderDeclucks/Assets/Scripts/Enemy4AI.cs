@@ -12,7 +12,7 @@ public class Enemy4AI : EnemyAI
 
     
     //Alerts enemies to the location of the player at all times
-    private void Awake()
+    private void Start()
     {
         randomDirection = Random.value;
         target = GameObject.FindObjectOfType<PlayerController>().transform;
