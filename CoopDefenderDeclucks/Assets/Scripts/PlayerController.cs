@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
         moveVelocity = moveInput * moveSpeed;
             
         //If player is not moving, play idle animation, else play running animation
