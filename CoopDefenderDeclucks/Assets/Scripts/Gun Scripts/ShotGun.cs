@@ -19,6 +19,7 @@ public class ShotGun : Gun
     }
     public override void shoot(Vector3 dir)
     {
+        print("x is " + transform.forward.x + " y is " + transform.forward.y + " z is " + transform.forward.z);
         print("Wee are in the shotgun shoot");
         if (player.isRapidFire)//Checks to see if rapid fire power up has been picked up
             currentFireRate = fireRate - 0.25f;
@@ -49,10 +50,10 @@ public class ShotGun : Gun
 
 
             adjustBullet(bulletObject, Vector3.zero);
-            adjustBullet(bullet1,new Vector3(0.2f,0,0));
+            adjustBullet(bullet1, transform.right * 0.2f);
             bullet1.transform.Rotate(0, 5, 0);
 
-            adjustBullet(bullet2, new Vector3(-0.2f, 0, 0));
+            adjustBullet(bullet2, -transform.right * 0.2f);
             bullet2.transform.Rotate(0, -5, 0);
 
             //bulletObject.rigid.velocity = transform.forward * bulletSpeed;

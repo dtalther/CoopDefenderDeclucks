@@ -76,8 +76,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", false);
         }
             
-
-            #region Code for Power-Up Timers
+        #region Code for Power-Up Timers
             if (timeSlowTimer > 0)//Checks to see if time slow power up is active
             {
                 timeSlowTimer -= Time.deltaTime / Time.timeScale;
@@ -108,25 +107,24 @@ public class PlayerController : MonoBehaviour
                     isRapidFire = false;
                 }
             }
-            #endregion
-     
-            Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
-            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-           float rayLength;
+        #endregion
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
 
-            if (groundPlane.Raycast(cameraRay, out rayLength))
-            {
-                lookPoint = cameraRay.GetPoint(rayLength);
+        if (groundPlane.Raycast(cameraRay, out rayLength))
+        {
+            lookPoint = cameraRay.GetPoint(rayLength);
 
-                transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
-            }
+            transform.LookAt(new Vector3(lookPoint.x, transform.position.y, lookPoint.z));
+        }
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.timeScale > 0)
         {
             if (gun != null)
                 gun.shoot(lookPoint);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.timeScale > 0)
         {
             if (grenadeCount > 0)
             {
@@ -197,13 +195,17 @@ public class PlayerController : MonoBehaviour
     //Clean up code for when player dies
     public void PlayerDeath()
     {
-        if (gameManager.score > gameManager.highScore)
+        if (!isDead)
         {
-            gameManager.getSaveManager().SaveScore(gameManager.score);
-            gameManager.setHighScore(gameManager.score);
-            gameManager.setGameState(false);
+            if (gameManager.score > gameManager.highScore)
+            {
+                gameManager.getSaveManager().SaveScore(gameManager.score);
+                gameManager.setHighScore(gameManager.score);
+                gameManager.setGameState(false);
+            }
+            isDead = true;
+            gameManager.startMode(5);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }
