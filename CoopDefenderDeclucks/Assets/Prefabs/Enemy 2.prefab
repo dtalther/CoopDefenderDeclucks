@@ -100,6 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
+  spread: {fileID: 825258947779222588, guid: bc59174cf2830f3429575e5254c1ed53, type: 3}
+  rapid: {fileID: 8272662747113702650, guid: 6be0aa07709605c47a0544b0e06b70f1, type: 3}
+  slowtime: {fileID: 1107347716963765834, guid: 245873401580df54bacb33818200879f,
+    type: 3}
+  shotgun: {fileID: 858667684244620212, guid: b519c608ac3dcb640b6ce94c0cbb3cb7, type: 3}
+  machinegun: {fileID: 2891131589477635311, guid: 6371dac9ff97eff45a923351c1a8c4ed,
+    type: 3}
   target: {fileID: 0}
   move: {fileID: 0}
   speed: 8
