@@ -44,17 +44,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   gun: {fileID: 0}
-  timeSlowAmount: 0
+  timeSlowAmount: 5
   isTimeSlowed: 0
-  spreggShotAmount: 0
+  spreggShotAmount: 5
   isSpregg: 0
-  rapidFireAmount: 0
+  rapidFireAmount: 5
   isRapidFire: 0
   gameManager: {fileID: 0}
   Talent_Tree: {fileID: 0}
   grenadeCount: 0
   fireRateMod: 0
   bulletSpeedMod: 0
+  isDead: 0
   scoreForNextPoint: 0
   skillPoints: 0
   grenadeType: {fileID: 8604230263756478310, guid: 89d1cddd11ff0f44480799e271807644,

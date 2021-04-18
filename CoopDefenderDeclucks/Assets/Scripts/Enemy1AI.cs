@@ -9,13 +9,16 @@ public class Enemy1AI : EnemyAI
     public Transform target;
     public NavMeshAgent move;
     public float speed;
-   
+
     //Alerts enemies to the location of the player at all times
     private void Start()
     {
         target = GameObject.Find("Coop").transform;
+
+       // target = GameObject.FindObjectOfType<PlayerController>().transform;
         move = GetComponent<NavMeshAgent>();
-        
+        move.speed = speed;
+
     }
     // Update is called once per frame
     void Update()
@@ -23,8 +26,8 @@ public class Enemy1AI : EnemyAI
         if (target != null)
         {
             move.SetDestination(target.position);
-            transform.LookAt(target);
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //transform.LookAt(target);
+            //transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 
@@ -34,6 +37,8 @@ public class Enemy1AI : EnemyAI
         if (collision.gameObject.tag.Equals("Coop"))
         {
             collision.gameObject.SetActive(false);
+            if (player != null)
+                player.PlayerDeath();
         }
     }
 

@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button Btn_ClassicMode;
-    [SerializeField] private Button Btn_CampaignMode;
+    [SerializeField] private Button Btn_CampaignLevel1;
+    [SerializeField] private Button Btn_CampaignLevel2;
+    [SerializeField] private Button Btn_CampaignLevel3;
     [SerializeField] private Button Btn_QuitGame;
     [SerializeField] private Button Btn_Resume;
     [SerializeField] private Text Txt_Title;
@@ -22,6 +24,7 @@ public class MainMenu : MonoBehaviour
     private bool isGameplaying;//Determines whether the player is playing a game mode or not
 
     public int currentScene;//Represents the current scene in play
+    public int previousLevel;//Represents the previous level that the player was in
 
     public int score;//current score of the player during gameplay
     public int highScore;//Highest recorded score from the player
@@ -49,6 +52,7 @@ public class MainMenu : MonoBehaviour
         previousTimeScale = 0;
         isPaused = false;
         currentScene = 0;
+        previousLevel = 0;
         Btn_Resume.gameObject.SetActive(false);
         menuCanvas = transform.GetChild(0).GetComponent<Canvas>();
 
@@ -72,6 +76,12 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    //Restarts whatever current level the player was on
+    public void restartLevel()
+    {
+        startMode(previousLevel);
+    }
+
     //Overloaded method for button presses
     public void startMode(int sceneValue)
     {
@@ -81,6 +91,7 @@ public class MainMenu : MonoBehaviour
     //Starts a scene based on its scene value
     public void startMode(int sceneValue, bool switchScenes)
     {
+        previousLevel = currentScene;
         //If the the scene value is 0 and the current scene is 0, quit the game
         if (sceneValue == 0 && currentScene == 0)
             Application.Quit();
@@ -89,29 +100,49 @@ public class MainMenu : MonoBehaviour
             currentScene = sceneValue;
             if(currentScene > 0)//When scene updates, update menu
             {
-                isGameplaying = true;
-                score = 0;
+                if (currentScene < 5)//If not on end screen, do the following
+                {
+                    score = 0;
+                    isGameplaying = true;
+                    Txt_GameplayScore.gameObject.SetActive(true);
+                }
+                else//else if on end screen
+                {
+                    isGameplaying = false;
+                    Txt_GameplayScore.gameObject.SetActive(false);
+                }
                 setGameplayScore(score);
                 Txt_Title.gameObject.SetActive(false);
-                Txt_GameplayScore.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(false);
+
                 Btn_ClassicMode.gameObject.SetActive(false);
-                Btn_CampaignMode.gameObject.SetActive(false);
                 Btn_QuitGame.gameObject.SetActive(false);
+
+                Btn_CampaignLevel1.gameObject.SetActive(false);
+                Btn_CampaignLevel2.gameObject.SetActive(false);
+                Btn_CampaignLevel3.gameObject.SetActive(false);
+
                 //Btn_Resume.gameObject.SetActive(true);
                 isPaused = false;
                 //menuCanvas.gameObject.SetActive(false);
             }
             else if(currentScene < 1)//If scene val is less than 1, load main menu
             {
+                print("saved high score data is " + saveManager.GetBestScore());
                 isGameplaying = false;
                 score = 0;
-                setGameplayScore(score);
+                setHighScore(highScore);
                 Time.timeScale = 1;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
                 Btn_ClassicMode.gameObject.SetActive(true);
-                Btn_CampaignMode.gameObject.SetActive(true);
                 Btn_Resume.gameObject.SetActive(false);
+
+                Btn_CampaignLevel1.gameObject.SetActive(true);
+                Btn_CampaignLevel2.gameObject.SetActive(true);
+                Btn_CampaignLevel3.gameObject.SetActive(true);
+                checkCampaignLevelStatus();
+
                 Txt_Title.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(true);
                 Txt_GameplayScore.gameObject.SetActive(false);
@@ -119,7 +150,7 @@ public class MainMenu : MonoBehaviour
                 //menuCanvas.gameObject.SetActive(true);
             }
             if(switchScenes == true)
-                SceneManager.LoadScene(sceneValue);
+                SceneManager.LoadScene(currentScene);
         }
     }
 
@@ -158,7 +189,7 @@ public class MainMenu : MonoBehaviour
     public void setHighScore(int scoreVal)
     {
         highScore = scoreVal;
-        Txt_HighScore.text = "Classic Mode High Score:  " + highScore;
+        Txt_HighScore.text = "High Score:  " + highScore;
     }
 
     //Returns save manager
@@ -171,5 +202,18 @@ public class MainMenu : MonoBehaviour
     public void setGameState(bool state)
     {
         isGameplaying = state;
+    }
+
+    //Activates buttons based on campaign level status
+    public void checkCampaignLevelStatus()
+    {
+        if(saveManager.GetLevelsCompleted() == 1)
+        {
+            Btn_CampaignLevel2.interactable = true;
+        }
+        if(saveManager.GetLevelsCompleted() >= 2)
+        {
+            Btn_CampaignLevel3.interactable = true;
+        }
     }
 }
