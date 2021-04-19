@@ -6,6 +6,7 @@ public class TimedObstacle : MonoBehaviour
 {
     public float timer;
     public GameObject explosion;
+    public Level1Text levelText;
     // Update is called once per frame
     void Update()
     {
@@ -13,6 +14,8 @@ public class TimedObstacle : MonoBehaviour
         if (timer <= 0)
         {
             Instantiate(explosion, this.transform.position, this.transform.rotation);
+            if (levelText != null)
+                levelText.count++;
             Destroy(this.gameObject);
         }
     }

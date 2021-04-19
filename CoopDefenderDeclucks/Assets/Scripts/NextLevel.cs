@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
+    public MainMenu menuManager;
+    private void Start()
+    {
+        menuManager = GameObject.FindObjectOfType<MainMenu>();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            print("Level Complete");
+            menuManager.startMode(6);
         }
     }
 }

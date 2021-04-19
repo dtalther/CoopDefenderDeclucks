@@ -11,7 +11,7 @@ public class Level2_Text : MonoBehaviour
     public Text Update2_Txt;
     void Start()
     {
-        TextUpdate_Timed(Start_Txt.gameObject, 6f);
+        TextUpdate_Timed(Start_Txt.gameObject, 10f);
     }
 
     // Update is called once per frame
