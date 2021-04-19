@@ -220,7 +220,7 @@ public class MainMenu : MonoBehaviour
     //Activates buttons based on campaign level status
     public void checkCampaignLevelStatus()
     {
-        if(saveManager.GetLevelsCompleted() == 1)
+        if(saveManager.GetLevelsCompleted() >= 1)
         {
             Btn_CampaignLevel2.interactable = true;
         }

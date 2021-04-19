@@ -12,6 +12,7 @@ TagManager:
   - TimeSlow
   - Ally
   - WayPoint
+  - Morpheus
   layers:
   - Default
   - TransparentFX
