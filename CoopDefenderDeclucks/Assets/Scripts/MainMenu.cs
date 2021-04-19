@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button Btn_CampaignLevel3;
     [SerializeField] private Button Btn_QuitGame;
     [SerializeField] private Button Btn_Resume;
+    [SerializeField] private Button Btn_ResetSave;
     [SerializeField] private Text Txt_Title;
     [SerializeField] private Text Txt_HighScore;
     [SerializeField] private Text Txt_GameplayScore;
@@ -44,8 +45,6 @@ public class MainMenu : MonoBehaviour
         saveManager.LoadGameData();
 
         highScore = saveManager.GetBestScore();
-
-        //saveManager.ResetSave();
 
         setHighScore(highScore);
 
@@ -123,6 +122,7 @@ public class MainMenu : MonoBehaviour
                 Btn_CampaignLevel1.gameObject.SetActive(false);
                 Btn_CampaignLevel2.gameObject.SetActive(false);
                 Btn_CampaignLevel3.gameObject.SetActive(false);
+                Btn_ResetSave.gameObject.SetActive(false);
 
                 //Btn_Resume.gameObject.SetActive(true);
                 isPaused = false;
@@ -139,6 +139,7 @@ public class MainMenu : MonoBehaviour
 
                 Btn_ClassicMode.gameObject.SetActive(true);
                 Btn_QuitGame.gameObject.SetActive(true);
+                Btn_ResetSave.gameObject.SetActive(true);
                 Btn_Resume.gameObject.SetActive(false);
 
                 Btn_CampaignLevel1.gameObject.SetActive(true);
@@ -236,5 +237,12 @@ public class MainMenu : MonoBehaviour
         {
             Btn_CampaignLevel3.interactable = false;
         }
+    }
+
+    //Resets Save
+    public void ResetSave()
+    {
+        saveManager.ResetSave();
+        Application.Quit();
     }
 }
