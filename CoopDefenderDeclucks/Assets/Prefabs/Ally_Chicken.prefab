@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 6518999031157507536}
   m_Layer: 0
   m_Name: Ally_Chicken
-  m_TagString: Player
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,7 +335,7 @@ Animator:
   m_GameObject: {fileID: 6520239780990372117}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d623cd35a78380d4eb0457c4e483abed, type: 3}
-  m_Controller: {fileID: 9100000, guid: 84dd067921f4e0045bb3a9a6e8fb7789, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1f80144590c5d8b42a61cfa6fd851057, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -389,6 +389,7 @@ MonoBehaviour:
   target: {fileID: 0}
   move: {fileID: 0}
   speed: 5
+  canMove: 0
   weapon: {fileID: 0}
 --- !u!195 &6518999031157507536
 NavMeshAgent:
