@@ -10,10 +10,8 @@ TagManager:
   - Coop
   - RapidFire
   - TimeSlow
-  - Generator
-  - PowerCore
-  - ExitCheck
-  - Door
+  - Ally
+  - WayPoint
   layers:
   - Default
   - TransparentFX

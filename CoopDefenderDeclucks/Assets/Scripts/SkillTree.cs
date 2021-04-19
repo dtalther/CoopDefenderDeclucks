@@ -17,6 +17,7 @@ public class SkillTree : MonoBehaviour
     [SerializeField] private Button Btn_Egg;
     [SerializeField] private Text SkillPoints;
     [SerializeField] private Text Skill_Alert;
+    [SerializeField] private Text Grenade_Counter;
 
     public PlayerController player;
     public GameObject gren1;
@@ -47,6 +48,7 @@ public class SkillTree : MonoBehaviour
         }
         else
             Skill_Alert.gameObject.SetActive(false);
+        Grenade_Counter.text = "Grenades: "+player.grenadeCount+"";
     }
     //First Tier
     public void pawButton()

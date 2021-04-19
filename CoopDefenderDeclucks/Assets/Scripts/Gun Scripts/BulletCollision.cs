@@ -25,7 +25,7 @@ public class BulletCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag != "Bullet")
+        if(collision.gameObject.tag != "Bullet" && collision.tag != "Ally" && collision.tag != "WayPoint")
             Destroy(gameObject);
     }
     IEnumerator SelfDestruct()
