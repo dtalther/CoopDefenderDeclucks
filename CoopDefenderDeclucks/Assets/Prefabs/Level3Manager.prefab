@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58aef2232b180b74abd5a66e7067ec2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseExplodeTimeAmount: 30
+  Txt_Objective: {fileID: 0}
+  Txt_ObjectiveIntro: {fileID: 0}
+  baseExplodeTimeAmount: 35
   Timer: 0
   Generators: []
   PowerCores: []
   Explosion: {fileID: 8604230263756478310, guid: 89d1cddd11ff0f44480799e271807644,
     type: 3}
+  DoorSpawners: []

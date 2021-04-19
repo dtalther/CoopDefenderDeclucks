@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public int score;//current score of the player during gameplay
     public int highScore;//Highest recorded score from the player
 
-    private float previousTimeScale;//Used to unpause game and set it back to the previous time scalw
+    private float previousTimeScale;//Used to unpause game and set it back to the previous time scale
 
     // Start is called before the first frame update
     void Awake()
@@ -44,6 +44,8 @@ public class MainMenu : MonoBehaviour
         saveManager.LoadGameData();
 
         highScore = saveManager.GetBestScore();
+
+        //saveManager.ResetSave();
 
         setHighScore(highScore);
 
@@ -93,7 +95,7 @@ public class MainMenu : MonoBehaviour
     {
         previousLevel = currentScene;
         //If the the scene value is 0 and the current scene is 0, quit the game
-        if (sceneValue == 0 && currentScene == 0)
+        if (sceneValue == -1 && currentScene == 0)
             Application.Quit();
         else
         {
@@ -149,6 +151,16 @@ public class MainMenu : MonoBehaviour
                 Txt_GameplayScore.gameObject.SetActive(false);
                 currentScene = 0;
                 //menuCanvas.gameObject.SetActive(true);
+            }
+            //If in win screen, check and update player progress
+            if(currentScene == 6)
+            {
+                //Checks to see if player has completed up to 3 levels
+                if(saveManager.GetLevelsCompleted() < 3)
+                {
+                    if((previousLevel == 2 && saveManager.GetLevelsCompleted() < 1) || (previousLevel == 3 && saveManager.GetLevelsCompleted() < 2) || (previousLevel == 4 && saveManager.GetLevelsCompleted() < 3))
+                        saveManager.SaveLevelProgress(saveManager.GetLevelsCompleted() + 1);
+                }
             }
             if(switchScenes == true)
                 SceneManager.LoadScene(currentScene);
@@ -212,9 +224,17 @@ public class MainMenu : MonoBehaviour
         {
             Btn_CampaignLevel2.interactable = true;
         }
+        else
+        {
+            Btn_CampaignLevel2.interactable = false;
+        }
         if(saveManager.GetLevelsCompleted() >= 2)
         {
             Btn_CampaignLevel3.interactable = true;
+        }
+        else
+        {
+            Btn_CampaignLevel3.interactable = false;
         }
     }
 }

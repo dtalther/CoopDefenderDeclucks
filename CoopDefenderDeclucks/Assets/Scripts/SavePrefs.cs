@@ -15,7 +15,7 @@ public class SavePrefs : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void saveLevelProgress(int levelVal)
+    public void SaveLevelProgress(int levelVal)
     {
         levelsCompleted = levelVal;
         PlayerPrefs.SetInt("LevelProgressData", levelsCompleted);

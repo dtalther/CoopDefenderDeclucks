@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level3Manager : MonoBehaviour
 {
+    public Text Txt_Objective;
+    public Text Txt_ObjectiveIntro;
     public float baseExplodeTimeAmount;
     [SerializeField] private float Timer;
 
@@ -20,6 +23,8 @@ public class Level3Manager : MonoBehaviour
     public GameObject Explosion;
 
     public Spawner [] DoorSpawners;
+    public AudioSource[] sirens;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,9 @@ public class Level3Manager : MonoBehaviour
         powerCoreCnt = PowerCores.Length;
         generatorCnt = Generators.Length;
         Timer = baseExplodeTimeAmount;
+        Txt_ObjectiveIntro.text = "Destroy "  +generatorCnt+ " Generators";
+        Txt_Objective.text = 0 + "/" +generatorCnt+ " Generators Destroyed";
+        sirens[0].gameObject.SetActive(true);
     }
 
     void Update()
@@ -39,6 +47,7 @@ public class Level3Manager : MonoBehaviour
         if(powerCoreCnt <= 0 && Time.timeScale > 0)
         {
             Timer -= Time.deltaTime/Time.timeScale;
+            Txt_Objective.text = Mathf.Round(Timer) + " seconds left!";
             if(Timer <= 0)
             {
                 gameManager.startMode(5);
@@ -49,8 +58,11 @@ public class Level3Manager : MonoBehaviour
     public void checkGeneratorProgress()
     {
         generatorCnt--;
+        Txt_Objective.text = (8 - generatorCnt) + "/8 Generators Destroyed";
         if (generatorCnt <= 0)
         {
+            Txt_ObjectiveIntro.text = "Destroy 3 Power Cores";
+            Txt_Objective.text = (3 - powerCoreCnt) + "/3 Power Cores Destroyed";
             Instantiate(Explosion, Door.transform.position, Door.transform.rotation).transform.localScale *= 6;
             Destroy(Door);
             DoorSpawners[0].gameObject.SetActive(true);
@@ -61,9 +73,17 @@ public class Level3Manager : MonoBehaviour
     public void checkPowerCoreProgress()
     {
         powerCoreCnt--;
+        Txt_Objective.text = (3 - powerCoreCnt) + "/3 Power Cores Destroyed";
         if (powerCoreCnt <= 0)
         {
+            Txt_ObjectiveIntro.text = "Escape the base!";
+            Txt_ObjectiveIntro.fontSize = 25;
+            Txt_Objective.fontSize = 25;
+            Txt_ObjectiveIntro.color = Color.red;
+            Txt_Objective.color = Color.red;
             exitCheck.SetActive(true);
+            sirens[0].gameObject.SetActive(true);
+            sirens[1].gameObject.SetActive(true);
         }
     }
 }

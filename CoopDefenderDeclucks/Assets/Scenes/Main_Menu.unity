@@ -838,6 +838,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 41.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1868257047, guid: ccbb2ccc8e636e14285df94066ebe502, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868257048, guid: ccbb2ccc8e636e14285df94066ebe502, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002802182, guid: ccbb2ccc8e636e14285df94066ebe502, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8332204730761581584, guid: ccbb2ccc8e636e14285df94066ebe502,
         type: 3}
       propertyPath: m_Name
@@ -897,6 +909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332204731164858948, guid: ccbb2ccc8e636e14285df94066ebe502,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8332204732076535906, guid: ccbb2ccc8e636e14285df94066ebe502,
         type: 3}
