@@ -11,11 +11,6 @@ public class EggGrenade : MonoBehaviour
         StartCoroutine(SelfDestruct());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Enemy"))
@@ -26,6 +21,7 @@ public class EggGrenade : MonoBehaviour
     IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(lingerTime);
-        Destroy(gameObject);
+        if(gameObject != null)
+            Destroy(gameObject);
     }
 }

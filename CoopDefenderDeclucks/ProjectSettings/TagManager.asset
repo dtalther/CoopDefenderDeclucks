@@ -8,6 +8,12 @@ TagManager:
   - SpreggShot
   - Bullet
   - Coop
+  - RapidFire
+  - TimeSlow
+  - Generator
+  - PowerCore
+  - ExitCheck
+  - Door
   layers:
   - Default
   - TransparentFX

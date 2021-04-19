@@ -45,6 +45,7 @@ MonoBehaviour:
   moveSpeed: 10
   gun: {fileID: 0}
   timeSlowAmount: 5
+  timeSlowTimer: 0
   isTimeSlowed: 0
   spreggShotAmount: 5
   isSpregg: 0

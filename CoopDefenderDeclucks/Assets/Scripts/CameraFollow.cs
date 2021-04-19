@@ -18,7 +18,10 @@ public class CameraFollow : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = Vector3.Lerp(transform.position, target.position + offset, 1.0f);
+            if(Input.GetMouseButton(1))
+                offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * 1.5f, Vector3.up) * offset;
+            transform.position = target.position + offset;
+            transform.LookAt(target.position);
         }
     }
 }

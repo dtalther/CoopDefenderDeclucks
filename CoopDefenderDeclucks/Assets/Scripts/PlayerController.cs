@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Camera mainCamera;
 
     public float timeSlowAmount;//Duration of Time Slow Powerup
-    private float timeSlowTimer;
+    public float timeSlowTimer;
     public bool isTimeSlowed;
     
     public float spreggShotAmount;//Duration of Spregg Shot Powerup
@@ -66,8 +66,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-        moveVelocity = moveInput * moveSpeed;
+        Vector3 moveX = (mainCamera.transform.right * Input.GetAxisRaw("Horizontal"));
+        Vector3 moveZ = (mainCamera.transform.forward * Input.GetAxisRaw("Vertical"));
+        moveInput = (moveX + moveZ);
+        //moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        moveVelocity = moveInput.normalized * moveSpeed;
 
         //If player is not moving, play idle animation, else play running animation
         if(!Vector3.Equals(moveInput, Vector3.zero))
@@ -80,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
             
         #region Code for Power-Up Timers
-            if (timeSlowTimer > 0)//Checks to see if time slow power up is active
+            if (isTimeSlowed && Time.timeScale > 0)//Checks to see if time slow power up is active
             {
                 timeSlowTimer -= Time.deltaTime / Time.timeScale;
                 if (timeSlowTimer <= 0)//Return time scale to normal after elapsed power-up time
@@ -92,7 +95,7 @@ public class PlayerController : MonoBehaviour
                     Time.fixedDeltaTime = Time.timeScale * 0.02f;
                 }
             }
-            if (spreggShotTimer > 0)
+            if (isSpregg && Time.timeScale > 0)
             {
                 spreggShotTimer -= Time.deltaTime / Time.timeScale;
                 if (spreggShotTimer <= 0)
@@ -102,7 +105,7 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            if (rapidFireTimer > 0)
+            if (isRapidFire && Time.timeScale > 0)
             {
                 rapidFireTimer -= Time.deltaTime / Time.timeScale;
                 if (rapidFireTimer <= 0)
@@ -160,9 +163,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //myRigidbody.AddForce(moveVelocity);
-        moveVelocity.y = myRigidbody.velocity.y;
-        myRigidbody.velocity = moveVelocity;
-      
+        moveVelocity = new Vector3(moveVelocity.x, myRigidbody.velocity.y, moveVelocity.z).normalized * moveSpeed;
+        myRigidbody.velocity = new Vector3(moveVelocity.x, myRigidbody.velocity.y, moveVelocity.z);
     }
     void eggxplosion()
     {
@@ -176,22 +178,25 @@ public class PlayerController : MonoBehaviour
         switch (otherTag)//Switch statement checks if player collided with a power-up based on tag
         {
             case "TimeSlow":
-                isTimeSlowed = true;
-                timeSlowTimer += timeSlowAmount;
-                Time.timeScale = 0.5f;
-                Time.fixedDeltaTime = Time.timeScale * 0.02f;
-                moveSpeed = baseSpeed * 1.25f;
-                Destroy(other.gameObject);
+                    isTimeSlowed = true;
+                    timeSlowTimer += timeSlowAmount;
+                    Time.timeScale = 0.5f;
+                    Time.fixedDeltaTime = Time.timeScale * 0.02f;
+                    moveSpeed = baseSpeed * 1.25f;
+                    Destroy(other.gameObject);
                 break;
             case "SpreggShot":
-                isSpregg = true;
-                spreggShotTimer += spreggShotAmount;
-                Destroy(other.gameObject);
+                    isSpregg = true;
+                    spreggShotTimer += spreggShotAmount;
+                    Destroy(other.gameObject);
                 break;
             case "RapidFire":
-                isRapidFire = true;
-                rapidFireTimer += rapidFireAmount;
-                Destroy(other.gameObject);
+                    isRapidFire = true;
+                    rapidFireTimer += rapidFireAmount;
+                    Destroy(other.gameObject);
+                break;
+            case "ExitCheck":
+                print("you win");
                 break;
         }
     }

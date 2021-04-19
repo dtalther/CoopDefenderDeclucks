@@ -136,6 +136,7 @@ public class MainMenu : MonoBehaviour
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
                 Btn_ClassicMode.gameObject.SetActive(true);
+                Btn_QuitGame.gameObject.SetActive(true);
                 Btn_Resume.gameObject.SetActive(false);
 
                 Btn_CampaignLevel1.gameObject.SetActive(true);
