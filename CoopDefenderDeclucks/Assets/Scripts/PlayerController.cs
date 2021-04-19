@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
                     Destroy(other.gameObject);
                 break;
             case "ExitCheck":
-                print("you win");
+                gameManager.startMode(6);
                 break;
         }
     }
