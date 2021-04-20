@@ -24,6 +24,7 @@ public class Level3Manager : MonoBehaviour
 
     public Spawner [] DoorSpawners;
     public AudioSource[] sirens;
+    public Light[] doorLights;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,8 @@ public class Level3Manager : MonoBehaviour
             Destroy(Door);
             DoorSpawners[0].gameObject.SetActive(true);
             DoorSpawners[1].gameObject.SetActive(true);
+            doorLights[0].color = Color.green;
+            doorLights[1].color = Color.green;
         }
     }
 
@@ -76,6 +79,18 @@ public class Level3Manager : MonoBehaviour
         Txt_Objective.text = (3 - powerCoreCnt) + "/3 Power Cores Destroyed";
         if (powerCoreCnt <= 0)
         {
+            Txt_Objective.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            Txt_Objective.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+            Txt_ObjectiveIntro.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            Txt_ObjectiveIntro.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+            Txt_Objective.alignment = TextAnchor.MiddleCenter;
+            Txt_ObjectiveIntro.alignment = TextAnchor.MiddleCenter;
+
+            Txt_Objective.rectTransform.anchoredPosition = new Vector2(0, 100);
+            Txt_ObjectiveIntro.rectTransform.anchoredPosition = new Vector2(0, 200);
+
             Txt_ObjectiveIntro.text = "Escape the base!";
             Txt_ObjectiveIntro.fontSize = 25;
             Txt_Objective.fontSize = 25;
