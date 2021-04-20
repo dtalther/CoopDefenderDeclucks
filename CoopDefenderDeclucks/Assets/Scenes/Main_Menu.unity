@@ -1127,6 +1127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8332204732076535906, guid: ccbb2ccc8e636e14285df94066ebe502,
         type: 3}
+      propertyPath: m_Text
+      value: 'Coop Defender: Declucks'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332204732076535906, guid: ccbb2ccc8e636e14285df94066ebe502,
+        type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
