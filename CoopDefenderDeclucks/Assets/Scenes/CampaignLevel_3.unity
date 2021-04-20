@@ -2294,7 +2294,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.6
+  m_Intensity: 2
   m_Range: 23.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3070,7 +3070,6 @@ GameObject:
   m_Component:
   - component: {fileID: 773602910}
   - component: {fileID: 773602912}
-  - component: {fileID: 773602911}
   m_Layer: 0
   m_Name: Point Light (12)
   m_TagString: Untagged
@@ -3092,18 +3091,6 @@ Transform:
   m_Father: {fileID: 1417051490}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &773602911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773602909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e66e7991e237624599daa56998c0ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &773602912
 Light:
   m_ObjectHideFlags: 0
@@ -3874,7 +3861,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.6
+  m_Intensity: 2
   m_Range: 23.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -5310,7 +5297,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.6
+  m_Intensity: 2
   m_Range: 23.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6396,7 +6383,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1908101124}
   - component: {fileID: 1908101126}
-  - component: {fileID: 1908101125}
   m_Layer: 0
   m_Name: Point Light (13)
   m_TagString: Untagged
@@ -6418,18 +6404,6 @@ Transform:
   m_Father: {fileID: 1417051490}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1908101125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908101123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e66e7991e237624599daa56998c0ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &1908101126
 Light:
   m_ObjectHideFlags: 0
@@ -6698,7 +6672,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.6
+  m_Intensity: 2
   m_Range: 23.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -7050,7 +7024,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.6
+  m_Intensity: 2
   m_Range: 23.74
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

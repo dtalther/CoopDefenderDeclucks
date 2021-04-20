@@ -15,7 +15,7 @@ public class LightFlicker : MonoBehaviour
         timer = 0;
         light = GetComponent<Light>();
         intense = false;
-        amount = 0.025f;
+        amount = 0.01f;
     }
 
     // Update is called once per frame
@@ -41,16 +41,16 @@ public class LightFlicker : MonoBehaviour
             light.intensity/= 2;
             timer = 0;
         }*/
-        if(timer < 3 && intense == false)
+        if(timer < 2.25f && intense == false)
         {
             light.intensity += amount;
         }
-        else if((timer > 3 || timer > 0) && intense == true)
+        else if((timer > 2.25f || timer > 0) && intense == true)
         {
             light.intensity -= amount;
         }
 
-        if(timer >= 3 && intense == false)
+        if(timer >= 2.25f && intense == false)
         {
             intense = true;
         }

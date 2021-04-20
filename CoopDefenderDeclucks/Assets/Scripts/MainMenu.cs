@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Text Txt_Title;
     [SerializeField] private Text Txt_HighScore;
     [SerializeField] private Text Txt_GameplayScore;
+    [SerializeField] private Text Txt_Controls;
 
     private Canvas menuCanvas;//Actual canvas gameobject
     private static MainMenu menuInstance;//Reference to this script to make sure double spawn doesn't occur
@@ -112,6 +113,7 @@ public class MainMenu : MonoBehaviour
                     isGameplaying = false;
                     Txt_GameplayScore.gameObject.SetActive(false);
                 }
+                Txt_Controls.gameObject.SetActive(false);
                 setGameplayScore(score);
                 Txt_Title.gameObject.SetActive(false);
                 Txt_HighScore.gameObject.SetActive(false);
@@ -150,6 +152,7 @@ public class MainMenu : MonoBehaviour
                 Txt_Title.gameObject.SetActive(true);
                 Txt_HighScore.gameObject.SetActive(true);
                 Txt_GameplayScore.gameObject.SetActive(false);
+                Txt_Controls.gameObject.SetActive(true);
                 currentScene = 0;
                 //menuCanvas.gameObject.SetActive(true);
             }
